@@ -1,0 +1,12 @@
+body {
+  height: 100%;
+}
+.containerUser {
+  background: red;
+}
+.user {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 20px 35px;
+}
