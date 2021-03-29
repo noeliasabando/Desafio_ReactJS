@@ -12,12 +12,17 @@ const ContainerLayout = ({ children }) => {
     <Layout className="Layout">
       <Layout.Content>
         <Row className="containerUser">
-          <Col className="user">NOMBRE USUARIO</Col>
+          <Col className="user">
+            {decodedToken && decodedToken.employee.name}{" "}
+            {decodedToken && decodedToken.employee.surname}
+          </Col>
         </Row>
         <Row>
           <Col span={4}>
             <Row>
-              <LateralMenu userType={decodedToken && decodedToken.employee.isAdm} />
+              <LateralMenu
+                userType={decodedToken && decodedToken.employee.isAdm}
+              />
             </Row>
           </Col>
           <Col span={20}>{children}</Col>

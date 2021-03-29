@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Button } from "antd";
+import { Link } from "react-router-dom";
+import { Table, Button, Row } from "antd";
 
 const ListTable = ({ data, deleteUser, userType }) => {
   const columns = [
@@ -36,13 +37,20 @@ const ListTable = ({ data, deleteUser, userType }) => {
       title: "Acciones",
       key: "action",
       render: (record) => (
-        <Button
-          type="link"
-          onClick={() => deleteUser(record.idEmployee)}
-          disabled={!userType}
-        >
-          Eliminar usuario
-        </Button>
+        <Row>
+          <Button
+            type="link"
+            onClick={() => deleteUser(record.idEmployee)}
+            disabled={!userType}
+          >
+            Eliminar usuario
+          </Button>
+          <Link to={{ pathname: `/formulario/${record.idEmployee}`}}>
+            <Button type="link" disabled={!userType}>
+              Editar usuario
+            </Button>
+          </Link>
+        </Row>
       ),
     },
   ];

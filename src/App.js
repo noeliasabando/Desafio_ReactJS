@@ -20,7 +20,12 @@ function App() {
           </Route>
           <Route exact path="/formulario">
             <ContainerLayout>
-              <ContainerFormUser />
+              <ContainerFormUser view="Create"/>
+            </ContainerLayout>
+          </Route>
+          <Route exact path="/formulario/:id">
+            <ContainerLayout>
+              <ContainerFormUser view="Edit"/>
             </ContainerLayout>
           </Route>
         </Switch>

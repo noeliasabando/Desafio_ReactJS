@@ -20,7 +20,7 @@ const LoginContainer = () => {
           history.push("/inicio");
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setError(true);
       });
   };

@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Menu } from "antd";
+import { Link, useHistory } from "react-router-dom";
+
+import { Button, Menu } from "antd";
 
 const LateralMenu = ({ userType }) => {
+  const history = useHistory();
+  const logout =  () => {
+    localStorage.removeItem('token')
+    history.push("/");
+  }
   return (
     <Menu defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} mode="inline">
       <Menu.Item key="1">
@@ -10,15 +16,14 @@ const LateralMenu = ({ userType }) => {
       </Menu.Item>
       {userType && (
         <Menu.Item key="2">
-          <Link to="/formulario">Crear usuarios</Link>
+          <Link to={{ pathname: "/formulario" }}>Crear usuarios</Link>
         </Menu.Item>
       )}
-      {userType && (
-        <Menu.Item key="3">
-          <Link to="/formulario">Editar usuarios</Link>
-        </Menu.Item>
-      )}
-      <Menu.Item key="4">Cerrar sesión</Menu.Item>
+      <Menu.Item key="4">
+        <Button type="link" onClick={() => logout()}>
+          Cerrar sesión
+        </Button>
+      </Menu.Item>
     </Menu>
   );
 };
